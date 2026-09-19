@@ -5,65 +5,130 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>호텔위더스 정동진 | 회원전용 예약센터</title>
   <style>
-/* 로고 이미지 스타일 */
-    .logo img {
-      height: 44px; /* 헤더 높이에 맞춘 크기 */
-      width: auto;
-      display: block;
-      object-fit: contain;
+    :root {
+      --primary: #1b1e23;
+      --gold: #c5a880;
+      --light-bg: #f8f9fa;
+      --text: #333333;
     }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Pretendard", Roboto, sans-serif;
     }
-    * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Pretendard", Roboto, sans-serif; }
-    body { background-color: var(--light-bg); color: var(--text); scroll-behavior: smooth; line-height: 1.6; }
-    
-    /* 상단 고정 헤더 */
+    body {
+      background-color: var(--light-bg);
+      color: var(--text);
+      scroll-behavior: smooth;
+      line-height: 1.6;
+    }
+
+    /* 1. 상단 고정 헤더 & 로고 */
     header {
       position: sticky;
       top: 0;
       z-index: 1000;
       background: rgba(27, 30, 35, 0.95);
       backdrop-filter: blur(8px);
-      padding: 16px 30px;
+      padding: 12px 30px;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      border-bottom: 1px solid rgba(255,255,255,0.1);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     }
-    .logo {
-      color: var(--gold);
-      font-weight: 700;
-      font-size: 1.15rem;
-      letter-spacing: 1px;
+    .logo a {
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+    }
+    .logo img {
+      height: 46px;
+      width: auto;
+      display: block;
+      object-fit: contain;
+    }
+    nav {
+      display: flex;
+      align-items: center;
     }
     nav a {
       color: #eaeaea;
       text-decoration: none;
-      margin-left: 20px;
+      margin-left: 24px;
       font-size: 0.95rem;
       transition: color 0.2s;
     }
-    nav a:hover { color: var(--gold); }
+    nav a:hover {
+      color: var(--gold);
+    }
     .btn-reserve {
       background: var(--gold);
       color: #ffffff !important;
-      padding: 8px 16px;
+      padding: 8px 18px;
       border-radius: 4px;
       font-weight: 600;
     }
 
-    /* 메인 비주얼 동영상 히어로 */
-    <section class="hero">
-    <video autoplay muted loop playsinline>
-      <!-- 강릉 브랜드 천혜의 비경 영상 주소 적용 -->
-      <source src="https://visitgangneung.net/_img/media/promotion_video/%EA%B0%95%EB%A6%89%EB%B8%8C%EB%9E%9C%EB%93%9C_%EC%B2%9C%ED%98%9C%EC%9D%98%20%EB%B9%84%EA%B2%BD%ED%8E%B8_%EC%9E%90%EC%87%BD%EC%9E%90%EB%A7%89%20%EC%88%98%EC%A0%95%EB%B3%B8-23.7.31-3%EC%B0%A8.mp4" type="video/mp4">
-    </video>
-    <div class="hero-text">
-      <h1>호텔위더스 정동진</h1>
-      <p>동해의 수평선과 일출을 품은 회원 전용 프라이빗 안식처</p>
-    </div>
-  </section>
+    /* 2. 메인 비주얼 유튜브 배경 영상 */
+    .hero {
+      position: relative;
+      height: 65vh;
+      min-height: 420px;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: #ffffff;
+      background-color: #000;
+    }
+    .video-background {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      overflow: hidden;
+    }
+    .video-background iframe {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 100vw;
+      height: 56.25vw; /* 16:9 비율 유지 */
+      min-height: 100vh;
+      min-width: 177.77vh; /* 16:9 비율 유지 */
+      transform: translate(-50%, -50%);
+    }
+    .hero-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.45);
+      z-index: 1;
+    }
+    .hero-text {
+      position: relative;
+      z-index: 2;
+      padding: 0 20px;
+    }
+    .hero-text h1 {
+      font-size: 2.3rem;
+      margin-bottom: 12px;
+      letter-spacing: -0.5px;
+      text-shadow: 0 2px 10px rgba(0,0,0,0.6);
+    }
+    .hero-text p {
+      font-size: 1.15rem;
+      opacity: 0.95;
+      text-shadow: 0 2px 8px rgba(0,0,0,0.6);
+    }
 
-    /* 공통 섹션 레이아웃 */
+    /* 3. 공통 컨테이너 레이아웃 */
     .container {
       max-width: 1050px;
       margin: 0 auto;
@@ -82,7 +147,7 @@
       font-size: 1rem;
     }
 
-    /* 객실 둘러보기 카드 그리드 */
+    /* 4. 객실 안내 그리드 */
     .grid-3 {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -101,18 +166,19 @@
       display: block;
     }
     .room-info {
-      padding: 20px;
+      padding: 22px;
     }
     .room-info h3 {
       margin-bottom: 8px;
-      font-size: 1.2rem;
+      font-size: 1.25rem;
+      color: var(--primary);
     }
     .room-info p {
-      font-size: 0.9rem;
+      font-size: 0.92rem;
       color: #666;
     }
 
-    /* 멤버쉽 혜택 섹션 */
+    /* 5. 멤버쉽 가입 혜택 */
     .benefits-wrapper {
       background: #ffffff;
       border-radius: 12px;
@@ -122,52 +188,79 @@
     .benefit-item {
       display: flex;
       align-items: flex-start;
-      margin-bottom: 20px;
+      margin-bottom: 22px;
+    }
+    .benefit-item:last-child {
+      margin-bottom: 0;
     }
     .benefit-icon {
       font-size: 1.4rem;
       margin-right: 15px;
       color: var(--gold);
+      line-height: 1;
+    }
+    .benefit-text strong {
+      font-size: 1.05rem;
+      color: var(--primary);
+    }
+    .benefit-text p {
+      color: #666;
+      font-size: 0.9rem;
+      margin-top: 4px;
     }
 
-    /* 탈리 예약창 임베드 섹션 */
+    /* 6. 탈리 예약창 섹션 */
     .booking-section {
       background: #ffffff;
       border-radius: 12px;
       box-shadow: 0 4px 20px rgba(0,0,0,0.08);
       overflow: hidden;
-      padding: 30px 10px;
+      padding: 20px 0;
     }
     .booking-section iframe {
       width: 100%;
-      height: 850px;
+      height: 900px;
       border: 0;
       display: block;
     }
 
-    /* 푸터 */
+    /* 7. 하단 푸터 */
     footer {
       background: var(--primary);
       color: #888;
       text-align: center;
-      padding: 30px 20px;
+      padding: 35px 20px;
       font-size: 0.85rem;
       border-top: 1px solid rgba(255,255,255,0.05);
     }
 
+    /* 모바일 반응형 처리 */
     @media (max-width: 768px) {
-      header { flex-direction: column; gap: 12px; }
-      nav a { margin: 0 8px; font-size: 0.85rem; }
-      .hero-text h1 { font-size: 1.7rem; }
-      .booking-section iframe { height: 950px; }
+      header {
+        flex-direction: column;
+        gap: 12px;
+        padding: 15px;
+      }
+      nav a {
+        margin: 0 10px;
+        font-size: 0.88rem;
+      }
+      .hero-text h1 {
+        font-size: 1.75rem;
+      }
+      .booking-section iframe {
+        height: 1000px;
+      }
     }
   </style>
 </head>
 <body>
 
-  <!-- 상단 네비게이션 -->
+  <!-- 상단 헤더 & 로고 -->
   <header>
-    <div class="logo">HOTEL WITHUS JEONGDONGJIN</div>
+    <div class="logo">
+      <a href="#"><img src="logo.png" alt="호텔위더스 정동진"></a>
+    </div>
     <nav>
       <a href="#rooms">객실안내</a>
       <a href="#benefits">멤버쉽혜택</a>
@@ -175,92 +268,97 @@
     </nav>
   </header>
 
-  <!-- 메인 배경 동영상 히어로 -->
+  <!-- 메인 유튜브 배경 영상 히어로 -->
   <section class="hero">
-    <video autoplay muted loop playsinline>
-      <!-- 정동진 바다 느낌의 고화질 샘플 영상 -->
-      <source src="https://assets.mixkit.co/videos/preview/mixkit-waves-coming-to-the-beach-5016-large.mp4" type="video/mp4">
-    </video>
+    <div class="video-background">
+      <iframe 
+        src="https://www.youtube.com/embed/txuk-AxBxkU?autoplay=1&mute=1&loop=1&playlist=txuk-AxBxkU&controls=0&showinfo=0&rel=0&modestbranding=1" 
+        title="호텔위더스 홍보영상" 
+        frameborder="0" 
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+        allowfullscreen>
+      </iframe>
+    </div>
+    <div class="hero-overlay"></div>
     <div class="hero-text">
       <h1>호텔위더스 정동진</h1>
-      <p>동해의 수평선과 일출을 품은 회원 전용 프라이빗 안식처</p>
+      <p>동해의 푸른 파도와 일출을 품은 프라이빗 안식처</p>
     </div>
   </section>
 
-  <!-- 1. 객실 둘러보기 섹션 -->
+  <!-- 1. 객실 둘러보기 -->
   <section id="rooms" class="container">
     <h2 class="section-title">객실 둘러보기</h2>
-    <p class="section-subtitle">전 객실에서 정동진의 탁 트인 바다 전망을 감상하실 수 있습니다.</p>
+    <p class="section-subtitle">정동진의 바다 전망을 감상하실 수 있습니다.</p>
     <div class="grid-3">
       <div class="room-card">
-        <img src="https://images.unsplash.com/photo-1590490360182-c33d57733427?w=700&auto=format&fit=crop" alt="디럭스 오션뷰">
+        <img src="http://www.hotelwithus.co.kr/common/images/homepage/room/twin3.jpg" alt="디럭스 더블/트윈">
         <div class="room-info">
-          <h3>디럭스 오션뷰</h3>
-          <p>푸른 동해의 파노라마 뷰와 안락한 베딩을 갖춘 기본 객실</p>
+          <h3>디럭스 더블/트윈</h3>
+          <p>아늑하고 품격 있는 기본 객실</p>
         </div>
       </div>
       <div class="room-card">
-        <img src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=700&auto=format&fit=crop" alt="스위트 오션 테라스">
+        <img src="http://www.hotelwithus.co.kr/common/images/homepage/room/Suite1.jpg" alt="주니어 스위트">
         <div class="room-info">
-          <h3>스위트 오션 테라스</h3>
-          <p>야외 테라스에서 일출을 감상할 수 있는 최고급 스위트</p>
+          <h3>주니어 스위트</h3>
+          <p>원 베드룸 스위트 객실</p>
         </div>
       </div>
       <div class="room-card">
-        <img src="https://images.unsplash.com/photo-1566665797739-1674de7a421a?w=700&auto=format&fit=crop" alt="패밀리 오션 스위트">
+        <img src="http://www.hotelwithus.co.kr/common/images/homepage/room/Suite3.jpg" alt="주니어 스위트 오션">
         <div class="room-info">
-          <h3>패밀리 오션 스위트</h3>
-          <p>가족 및 소그룹 여행객을 위한 넉넉한 다이닝 공간과 침실</p>
+          <h3>주니어 스위트 오션</h3>
+          <p>확트인 썬크루즈 오션뷰와 넉넉한 거실 공간과 독립 침실</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- 2. 멤버쉽 가입 혜택 섹션 -->
+  <!-- 2. 멤버쉽 가입 혜택 -->
   <section id="benefits" style="background: #eceff2; padding: 70px 0;">
     <div class="container" style="padding-top: 0; padding-bottom: 0;">
       <h2 class="section-title">멤버쉽 가입 혜택</h2>
-      <p class="section-subtitle">호텔위더스 정회원 고객님께만 주어지는 특별한 특전입니다.</p>
+      <p class="section-subtitle">호텔위더스 정회원 고객님께만 제공되는 특별한 특전입니다.</p>
       <div class="benefits-wrapper">
         <div class="benefit-item">
           <div class="benefit-icon">✦</div>
-          <div>
-            <strong>연간 전용 무료 숙박권 및 우대 요금 지원</strong>
-            <p style="color: #666; font-size: 0.9rem; margin-top: 4px;">성수기·비수기 상관없이 우선 객실 배정 및 회원 전용 특가 적용</p>
+          <div class="benefit-text">
+            <strong>연간 전용 무료 숙박권 및 회원 우대 요금</strong>
+            <p>연중 우선 예약 및 회원 전용 특별 할인 요금 적용</p>
           </div>
         </div>
         <div class="benefit-item">
           <div class="benefit-icon">✦</div>
-          <div>
-            <strong>인피니티 풀 및 부대시설 상시 할인</strong>
-            <p style="color: #666; font-size: 0.9rem; margin-top: 4px;">정동진 뷰 인피니티 풀, 사우나, 조식 뷔페 회원 동반 할인</p>
+          <div class="benefit-text">
+            <strong>인피니티 풀 및 호텔 부대시설 상시 할인</strong>
+            <p>동해 뷰 인피니티 풀, 조식 뷔페, 카페 무료쿠폰 및 할인 혜택</p>
           </div>
         </div>
         <div class="benefit-item">
           <div class="benefit-icon">✦</div>
-          <div>
-            <strong>1:1 전담 컨시어지 예약 응대</strong>
-            <p style="color: #666; font-size: 0.9rem; margin-top: 4px;">회원 전용 직통 채널을 통한 신속한 일정 확정 및 객실 배정 케어</p>
+          <div class="benefit-text">
+            <strong>1:1 전담 컨시어지 서비스</strong>
+            <p>회원 전용 전담 직통 채널을 통해 원스톱 객실 배정</p>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- 3. 온라인 예약 접수 (탈리 폼) -->
+  <!-- 3. 탈리(Tally) 예약 신청창 -->
   <section id="booking" class="container">
     <h2 class="section-title">회원 & 숙박권 예약 신청</h2>
-    <p class="section-subtitle">정보를 입력해 주시면 예약실에서 회원/숙박권 확인 후 신속히 확정해 드립니다.</p>
+    <p class="section-subtitle">아래 신청서를 작성해 주시면 신속히 확정해 드립니다.</p>
     <div class="booking-section">
-      <!-- 고객님의 Tally 폼이 자연스럽게 들어갑니다 -->
       <iframe src="https://tally.so/r/RGOvJd?transparentBackground=1"></iframe>
     </div>
   </section>
 
-  <!-- 푸터 -->
+  <!-- 하단 정보 -->
   <footer>
-    <p>호텔위더스 정동진 회원전용 예약센터</p>
-    <p style="margin-top: 6px;">강원특별자치도 강릉시 강동면 정동진리 일원 | 예약 문의: 033-000-0000</p>
+    <p><strong>호텔위더스 정동진 회원전용 예약센터</strong></p>
+    <p style="margin-top: 6px;">강원특별자치도 강릉시 강동면 헌화로 920-16 | 예약문의: 033-660-9911</p>
   </footer>
 
 </body>

@@ -50,42 +50,16 @@
     }
 
     /* 메인 비주얼 동영상 히어로 */
-    .hero {
-      position: relative;
-      height: 60vh;
-      min-height: 400px;
-      overflow: hidden;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      color: #ffffff;
-    }
-    .hero video {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      min-width: 100%;
-      min-height: 100%;
-      transform: translate(-50%, -50%);
-      z-index: 1;
-      object-fit: cover;
-      filter: brightness(55%);
-    }
-    .hero-text {
-      position: relative;
-      z-index: 2;
-      padding: 0 20px;
-    }
-    .hero-text h1 {
-      font-size: 2.2rem;
-      margin-bottom: 12px;
-      letter-spacing: -0.5px;
-    }
-    .hero-text p {
-      font-size: 1.1rem;
-      opacity: 0.9;
-    }
+    <section class="hero">
+    <video autoplay muted loop playsinline>
+      <!-- 강릉 브랜드 천혜의 비경 영상 주소 적용 -->
+      <source src="https://visitgangneung.net/_img/media/promotion_video/%EA%B0%95%EB%A6%89%EB%B8%8C%EB%9E%9C%EB%93%9C_%EC%B2%9C%ED%98%9C%EC%9D%98%20%EB%B9%84%EA%B2%BD%ED%8E%B8_%EC%9E%90%EC%87%BD%EC%9E%90%EB%A7%89%20%EC%88%98%EC%A0%95%EB%B3%B8-23.7.31-3%EC%B0%A8.mp4" type="video/mp4">
+    </video>
+    <div class="hero-text">
+      <h1>호텔위더스 정동진</h1>
+      <p>동해의 수평선과 일출을 품은 회원 전용 프라이빗 안식처</p>
+    </div>
+  </section>
 
     /* 공통 섹션 레이아웃 */
     .container {
